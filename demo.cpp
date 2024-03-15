@@ -1,21 +1,18 @@
-//* Count Inversions.
-
+//* Count Reverse Pairs
 #include <bits/stdc++.h>
 using namespace std;
 
-int count_inversions(vector<int> vec)
+// i < j and arr[i] > 2 * arr[j];
+int count_reversed(vector<int> &vec)
 {
-    //*Inversed pair
-    // i < j but vec[i] > vec[j]
+    int n = vec.size();
     int count = 0;
-    for (int i = 0; i < vec.size() - 1; i++)
+    for (int i = 0; i < n - 1; i++)
     {
-        for (int j = i + 1; j < vec.size(); j++)
+        for (int j = 1; j < n; j++)
         {
-            if (vec[i] > vec[j])
-            {
+            if (vec[i] > vec[j] * 2)
                 count++;
-            }
         }
     }
     return count;
@@ -27,8 +24,8 @@ int main()
     freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
 #endif
-    vector<int> vec = {1, 2, 3, 4, 5};
-    int count = count_inversions(vec);
-    cout << "Inversions: " << count << endl;
+    vector<int> nums = {3, 2, 1, 4};
+    int count = count_reversed(nums);
+    cout << count << endl;
     return 0;
 }
